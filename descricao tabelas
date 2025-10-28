@@ -1,0 +1,55 @@
+Tabela: LOCADORA
+
+| Campo       | Nome completo             | Tipo de dado | Chave  | Descrição                       |
+| ----------- | ------------------------- | ------------ | ------ | ------------------------------- |
+| id_locadora | Identificador da locadora | INT          | PK     | Identificador único da locadora |
+| nome        | Nome da locadora          | VARCHAR(100) | —      | Nome fantasia da locadora       |
+| endereco    | Endereço                  | VARCHAR(200) | —      | Endereço completo da locadora   |
+| telefone    | Telefone                  | VARCHAR(15)  | —      | Telefone de contato             |
+| cnpj        | CNPJ                      | VARCHAR(14)  | UNIQUE | CNPJ da empresa                 |
+
+
+
+
+Tabela: CLIENTE
+
+| Campo      | Nome completo            | Tipo de dado | Chave  | Descrição                      |
+| ---------- | ------------------------ | ------------ | ------ | ------------------------------ |
+| id_cliente | Identificador do cliente | INT          | PK     | Código único do cliente        |
+| nome       | Nome completo            | VARCHAR(100) | —      | Nome do cliente                |
+| cpf        | CPF                      | VARCHAR(11)  | UNIQUE | Cadastro de pessoa física      |
+| telefone   | Telefone                 | VARCHAR(15)  | —      | Telefone de contato            |
+| email      | E-mail                   | VARCHAR(100) | —      | E-mail do cliente              |
+| is_active  | Cliente ativo            | BOOLEAN      | —      | Indica se o cliente está ativo |
+
+
+
+
+TABELA VEICULO
+
+| Campo        | Nome completo                 | Tipo de dado  | Chave | Descrição                           |
+| ------------ | ----------------------------- | ------------- | ----- | ----------------------------------- |
+| id_veiculo   | Identificador do veículo      | INT           | PK    | Código único do veículo             |
+| id_locadora  | Chave estrangeira da locadora | INT           | FK    | Locadora proprietária do veículo    |
+| modelo       | Modelo do veículo             | VARCHAR(100)  | —     | Modelo do carro                     |
+| marca        | Marca do veículo              | VARCHAR(50)   | —     | Marca do carro                      |
+| ano          | Ano de fabricação             | INT           | —     | Ano do modelo                       |
+| preco_diaria | Preço da diária               | DECIMAL(10,2) | —     | Valor da locação por dia            |
+| is_active    | Veículo ativo                 | BOOLEAN       | —     | Indica se o veículo está disponível |
+
+
+
+
+
+TABELA ALUGUEL
+
+| Campo       | Nome completo                 | Tipo de dado  | Chave | Descrição                      |
+| ----------- | ----------------------------- | ------------- | ----- | ------------------------------ |
+| id_aluguel  | Identificador do aluguel      | INT           | PK    | Código único do aluguel        |
+| id_cliente  | Chave estrangeira do cliente  | INT           | FK    | Cliente que realizou o aluguel |
+| id_veiculo  | Chave estrangeira do veículo  | INT           | FK    | Veículo alugado                |
+| id_locadora | Chave estrangeira da locadora | INT           | FK    | Locadora responsável           |
+| data_inicio | Data de início                | DATE          | —     | Data de retirada do veículo    |
+| data_fim    | Data de fim                   | DATE          | —     | Data de devolução              |
+| valor_total | Valor total                   | DECIMAL(10,2) | —     | Total do aluguel calculado     |
+
